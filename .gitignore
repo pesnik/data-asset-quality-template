@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.log
+.venv/
+.pytest_cache/
+.mypy_cache/
+
+# Data
+*.csv.gz
+*.parquet
+*.orc
+*.jsonl
+
+# Docker
+.dockerignore
+!Dockerfile
+!entrypoint.sh
+
+# Environment variables
+.env
+.flaskenv
+
+# Marimo specific
+.marimo/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
