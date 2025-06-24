@@ -82,80 +82,79 @@ In modern data ecosystems, **data moves constantly**. This template helps ensure
 data-asset-quality-template/
 ├── .github/
 │   └── workflows/
-│       ├── build_and_push_docker.yml         # GitHub Actions: Build & push Docker image
-│       └── validate_data.yml                 # GitHub Actions: Orchestrate validation run
-├── .gitlab-ci.yml                            # GitLab CI/CD configuration
+│       ├── build_and_push_docker.yml # GitHub Actions: Build & push Docker image
+│       └── validate_data.yml     # GitHub Actions: Orchestrate validation run
+├── .gitlab-ci.yml                # GitLab CI/CD configuration
 ├── config/
-│   ├── environments/                         # Environment-specific config (dev, uat, prod)
+│   ├── environments/             # Environment-specific configuration (dev, UAT, prod)
 │   │   ├── dev.yaml
 │   │   ├── uat.yaml
 │   │   └── prod.yaml
-│   ├── connectors.yaml                       # DB connection placeholders
-│   ├── validation_rules.yaml                 # YAML-based validation rules
-│   └── table_mappings.yaml                   # Source-target table mappings
+│   ├── connectors.yaml           # Generic DB connection details (placeholders)
+│   ├── validation_rules.yaml     # Centralized definition of validation rules
+│   └── table_mappings.yaml       # Generic source-to-target table/column mappings
 ├── data/
-│   └── sample_data/                          # Optional sample data for testing
+│   └── sample_data/              # Optional: Anonymized sample data for template dev/testing
 │       ├── source_sample.csv
 │       └── target_sample.csv
-├── docs/                                     # Full documentation set
-│   ├── TEMPLATE_GUIDE.md                     # 🔥 How to use this as a template
-│   ├── PROJECT_SETUP.md                      # Step-by-step setup guide
-│   ├── UAT_Process_Guide.md                  # UAT phase procedures
-│   ├── Data_Validation_Methods.md            # Validation logic explained
-│   ├── Data_Type_Mapping_Guide.md            # Mapping strategy reference
-│   ├── Discrepancy_Log_Template.md           # Template to log validation issues
-│   ├── Known_Issues_Template.md              # Template for accepted discrepancies
-│   └── Reporting_Templates/
-│       └── UAT_Report_Template.docx          # Final reporting format
-├── expectations/
+├── docs/                         # Comprehensive documentation and guides
+│   ├── TEMPLATE_GUIDE.md         # *** CRITICAL: How to use this repo as a template ***
+│   ├── PROJECT_SETUP.md          # Guide for setting up a new project from this template
+│   ├── UAT_Process_Guide.md      # General guide for UAT process
+│   ├── Data_Validation_Methods.md# Explanation of template's validation methods
+│   ├── Data_Type_Mapping_Guide.md# Guide for adapting data type mappings
+│   ├── Discrepancy_Log_Template.md# Template for logging issues
+│   ├── Known_Issues_Template.md  # Template for documenting accepted deviations
+│   └── Reporting_Templates/      # Templates for final UAT reports
+│       └── UAT_Report_Template.docx
+├── expectations/                 # For Great Expectations or Deequ expectations
 │   ├── deequ_expectations/
-│   │   ├── my_table_expectations.py
+│   │   ├── my_table_expectations.py # Deequ expectation definitions
 │   │   └── another_table_expectations.py
 │   └── great_expectations/
 │       ├── checkpoints/
 │       ├── expectations/
 │       │   └── my_table_suite.json
-│       └── uncommitted/                      # Local validation results
-├── notebooks/
-│   ├── template_eda.py
-│   ├── template_validation_report.py
-│   └── template_expectation_profiling.py
-├── src/
-│   ├── connectors/
+│       └── uncommitted/          # Uncommitted data docs, validation results, etc.
+├── notebooks/                    # Interactive notebooks (Marimo, Jupyter, etc.)
+│   ├── template_eda.py           # Example EDA (can be run by Marimo or Python)
+│   ├── template_validation_report.py # Example validation report (Marimo/Python)
+│   └── template_expectation_profiling.py # Example profiling (Marimo/Python)
+├── src/                          # All core Python/PySpark logic
+│   ├── connectors/               # Abstracted database connectors
 │   │   ├── __init__.py
 │   │   ├── base_connector.py
-│   │   ├── jdbc_connector.py
-│   │   └── hive_connector.py
-│   ├── validators/
+│   │   ├── jdbc_connector.py     # Generic JDBC implementation
+│   │   └── hive_connector.py     # Generic Hive/Hudi/Delta Lake connector
+│   ├── validators/               # Modular, generic validation logic
 │   │   ├── __init__.py
 │   │   ├── base_validator.py
 │   │   ├── schema_validator.py
 │   │   ├── count_validator.py
 │   │   ├── aggregation_validator.py
 │   │   └── checksum_validator.py
-│   ├── data_expectations/
+│   ├── data_expectations/        # Integration with Great Expectations/Deequ
 │   │   ├── __init__.py
 │   │   ├── ge_integration.py
 │   │   └── deequ_integration.py
-│   ├── reports/
+│   ├── reports/                  # Report generation modules
 │   │   ├── __init__.py
 │   │   └── html_reporter.py
-│   ├── main.py
-│   └── utils.py
-├── tests/
+│   ├── main.py                   # Orchestration script
+│   └── utils.py                  # Common utilities (config parsing, logging, error handling)
+├── tests/                        # Unit and integration tests for validation logic
 │   ├── unit/
 │   │   ├── test_connectors.py
 │   │   └── test_validators.py
 │   └── integration/
-│       └── test_e2e_validation.py
-├── Dockerfile
-├── entrypoint.sh
-├── Makefile
-├── pyproject.toml
-├── .dockerignore
-├── .gitignore
-├── README.md
-├── requirements.txt
+│       └── test_e2e_validation.py # Mini-end-to-end test with sample data
+├── Dockerfile                    # Docker build instructions
+├── entrypoint.sh                 # Script executed by Docker container
+├── Makefile                      # Centralized commands for development and operations
+├── pyproject.toml                # Project metadata and uv dependency configuration
+├── .dockerignore                 # Files to ignore when building Docker image
+├── .gitignore                    # Files to ignore in Git
+├── README.md                     # This file
 └── LICENSE
 ```
 
