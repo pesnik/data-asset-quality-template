@@ -30,7 +30,7 @@ build-docker: generate-reqs Dockerfile
 # Example: make run-validation-local VALIDATION_ENV=dev TERADATA_HOST=...
 run-validation-local: build-docker
 	@echo "Running data validation locally via Docker..."
-	docker run --rm 		-e VALIDATION_ENV=$(VALIDATION_ENV) 		-e TERADATA_HOST=$(TERADATA_HOST) 		-e TERADATA_PORT=$(TERADATA_PORT) 		-e TERADATA_USER=$(TERADATA_USER) 		-e TERADATA_PASSWORD=$(TERADATA_PASSWORD) 		-e MRS_HIVE_HOST=$(MRS_HIVE_HOST) 		-e MRS_HIVE_PORT=$(MRS_HIVE_PORT) 		-e MRS_HIVE_USER=$(MRS_HIVE_USER) 		-e MRS_HIVE_PASSWORD=$(MRS_HIVE_PASSWORD) 		$(DOCKER_IMAGE_NAME):latest
+	docker run --rm 		-e VALIDATION_ENV=$(VALIDATION_ENV) 		-e TERADATA_HOST=$(TERADATA_HOST) 		-e TERADATA_PORT=$(TERADATA_PORT) 		-e TERADATA_USER=$(TERADATA_USER) 		-e TERADATA_PASSWORD=$(TERADATA_PASSWORD) 		-e CLOUD_HIVE_HOST=$(CLOUD_HIVE_HOST) 		-e CLOUD_HIVE_PORT=$(CLOUD_HIVE_PORT) 		-e CLOUD_HIVE_USER=$(CLOUD_HIVE_USER) 		-e CLOUD_HIVE_PASSWORD=$(CLOUD_HIVE_PASSWORD) 		$(DOCKER_IMAGE_NAME):latest
 
 # Generic target to run any Python notebook/script from the notebooks folder
 # Example: make run-notebook NOTEBOOK_PATH=notebooks/template_eda.py
